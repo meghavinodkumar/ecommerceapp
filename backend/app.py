@@ -1,17 +1,22 @@
 import json
 import random
 from flask import Flask, jsonify, request
+from flask_cors import CORS
 
 # Create a new flask application 
 app = Flask(__name__)
+CORS(app)
 
 #################### Data storage ####################
 # Since we are not using a persistant storage here, the following in-memory variables are used for the temporary storage
 
 # List of products
-products = [ { 'id': 1, 'name': 'Torch', 'price':'100', 'url':'http://' },
-           { 'id': 2, 'name': 'Frying Pan', 'price':'400' , 'url':'http://'},
-           { 'id': 3, 'name': 'Basketball','price':'800', 'url':'http://' }
+products = [ { 'id': 1, 'name': 'Bag', 'price':'50', 'image_id': 1 },
+           { 'id': 2, 'name': 'Laptop', 'price':'2000' , 'image_id': 2 },
+           { 'id': 3, 'name': 'Smartphone','price':'1000', 'image_id': 3  },
+           { 'id': 4, 'name': 'Headphone','price':'100', 'image_id': 4  },
+           { 'id': 5, 'name': 'Shoes','price':'200', 'image_id': 5  },
+           { 'id': 6, 'name': 'Watch','price':'150', 'image_id': 6  }
         ]
 
 # List of orders
@@ -108,9 +113,12 @@ def apply_coupon(code):
     # Check if the given couplecode is a valid one first
     totalPrice = get_total_price()
     if is_valid_code(int(code)):
-        totalPrice = totalPrice - (totalPrice*discount_percentage/100)
+        discount_amount = totalPrice * discount_percentage / 100
+        totalPrice = totalPrice - discount_amount
         cart['coupon_applied'] = True
         cart['total_price'] = totalPrice
+        cart['discount_code'] = code
+        cart['discount_amount'] = discount_amount
     return jsonify({'total_price':totalPrice})
 
 # check whether the last count-1 orders did not apply any coupons. 
@@ -144,9 +152,23 @@ def place_order():
     cart = {'items' : [], 'total_price' :0, 'discount_eligibility': False, 'coupon_applied' : False, }
     return jsonify(order)
 
-#Lists count of items purchased, total purchase amount, list of discount codes and total discount amount
-# @app.route('/adminStats',methods=['GET'])
-# def admin_stats():
+# Lists count of items purchased, total purchase amount, list of discount codes and total discount amount
+@app.route('/admin_stats',methods=['GET'])
+def admin_stats():
+    global orders
+    num_items = 0
+    total_purchase_amount = 0
+    discount_codes = []
+    total_discount_amount = 0
+
+    for order in orders:
+        num_items += len(order['items'])
+        total_purchase_amount += order['total_price']
+        if order['coupon_applied']:
+            total_discount_amount + order['discount_amount']
+            discount_codes.append[order['discount_code']]
+    return jsonify({'total_items_purchased': num_items, 'total_purchase_amount': total_purchase_amount, 
+                    'discount_codes': discount_codes, 'total_discount_amount': total_discount_amount})
     
 if __name__ == '__main__':
     app.run(port=5000)
