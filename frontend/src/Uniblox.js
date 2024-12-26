@@ -34,9 +34,9 @@ const Uniblox=()=> {
           <img src={unibloxlogo} className="Uniblox-logo" alt="logo" />
           <p className="Uniblox-title">Uniblox</p>
         </header>
-      <div className="Uniblox-searchBar">
+        <div className="Uniblox-searchBar">
         <SearchBar items={items}/>
-      </div>
+        </div>
         <div className="Uniblox-topMenu">
           <Button className="Uniblox-topMenu-signin">
             Signin
@@ -44,59 +44,22 @@ const Uniblox=()=> {
           <Button className="Uniblox-topMenu-cart" onClick={handleOnClick}>
             Cart
           </Button>
-      </div>
+        </div>
       </div>
           <div className="Uniblox-bodyItems">
-            <div className="Uniblox-bodyItems-item">
-              <img src={bag} className="Uniblox-bodyItems-item-img" alt="logo" />
-              <p className="Uniblox-bodyItems-item-name">Bag</p>
-              <p className="Uniblox-bodyItems-item-price">$50</p>
+          {items.map((item, index) => (
+            <div className="Uniblox-bodyItems-item" key={index}>
+              <img src={item.image}className="Uniblox-bodyItems-item-img" alt={item.name}/>
+              <p className="Uniblox-bodyItems-item-name">{item.name}</p>
+              <p className="Uniblox-bodyItems-item-price">${item.price}</p>
               <Button className="Uniblox-bodyItems-item-addItem">
                 Add to cart
               </Button>
-            </div>
-            <div className="Uniblox-bodyItems-item">
-              <img src={laptop} className="Uniblox-bodyItems-item-img" alt="logo" />
-              <p className="Uniblox-bodyItems-item-name">Laptop</p>
-              <p className="Uniblox-bodyItems-item-price">$2000</p>
-              <Button className="Uniblox-bodyItems-item-addItem">
-                Add to cart
-              </Button>
-            </div>
-            <div className="Uniblox-bodyItems-item">
-              <img src={smartphone} className="Uniblox-bodyItems-item-img" alt="logo" />
-              <p className="Uniblox-bodyItems-item-name">Smartphone</p>
-              <p className="Uniblox-bodyItems-item-price">$1000</p>
-              <Button className="Uniblox-bodyItems-item-addItem">
-                Add to cart
-              </Button>
-            </div>
-            <div className="Uniblox-bodyItems-item">
-              <img src={headphone} className="Uniblox-bodyItems-item-img" alt="logo" />
-              <p className="Uniblox-bodyItems-item-name">Headphone</p>
-              <p className="Uniblox-bodyItems-item-price">$100</p>
-              <Button className="Uniblox-bodyItems-item-addItem">
-                Add to cart
-              </Button>
-            </div>
-            <div className="Uniblox-bodyItems-item">
-              <img src={shoes} className="Uniblox-bodyItems-item-img" alt="logo" />
-              <p className="Uniblox-bodyItems-item-name">Shoes</p>
-              <p className="Uniblox-bodyItems-item-price">$200</p>
-              <Button className="Uniblox-bodyItems-item-addItem">
-                Add to cart
-              </Button>
-            </div>
-            <div className="Uniblox-bodyItems-item">
-              <img src={watch} className="Uniblox-bodyItems-item-img" alt="logo" />
-              <p className="Uniblox-bodyItems-item-name">Watch</p>
-              <p className="Uniblox-bodyItems-item-price">$150</p>
-              <Button className="Uniblox-bodyItems-item-addItem">
-                Add to cart
-              </Button>
-            </div>
-            </div>
-          </div>
+           </div>
+          ))}
+            
+        </div>
+      </div>
   );
 }
 

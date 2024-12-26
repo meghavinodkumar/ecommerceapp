@@ -7,7 +7,8 @@
     color:white;
     font-size:30px;
     font-weight:400;
-    padding: 50px;
+    padding-top:50px;
+    margin-left: 50px;
 }
 .Cart-items{
   display: flex;
@@ -18,6 +19,9 @@
   border-radius: 40px;
   border: white solid;
 }
+.Cart-card{
+  margin: 50px;
+}
 
 .Cart-item-name{
   color: white;
@@ -27,4 +31,15 @@
 }
 .Cart-card-content {
   display:grid !important;
+}
+.Cart-total{
+  color: white;
+  font-size:30px;
+  font-weight:400;
+  margin-left: 50px;
+  display: flex;
+  flex-direction: row;
+}
+.Cart-coupon-text{
+  color: white;
 }

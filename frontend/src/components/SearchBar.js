@@ -48,7 +48,7 @@ const SearchBar = ({ items }) => {
           ))}
         </div>
       ) : (
-        <NotFound />
+        <div></div>
       )}
     </div>
   );

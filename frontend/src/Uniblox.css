@@ -8,15 +8,16 @@
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  padding-bottom: 20px;
 }
 .Uniblox-header-content {
   display: flex;
-  width: 30%;
+  width: 10%;
   flex-direction: row;
   align-items: center;
   justify-content:center;
   gap:20px;
-  font-size: calc(20px + 2vmin);
+  font-size: calc(20px + 1vmin);
   color: white;
 }
 .Uniblox-title{
@@ -41,7 +42,7 @@
 }
 
 .Uniblox-logo {
-  height: 10vmin;
+  height: 6vmin;
   pointer-events: none;
 }
 
