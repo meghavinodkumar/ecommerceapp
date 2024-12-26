@@ -13,7 +13,7 @@ import shoes from "../images/shoes.jpg";
 import smartphone from "../images/smartphone.jpg";
 import bag from "../images/bag.webp";
 import watch from "../images/watch.webp";
-
+import Snackbar from "@mui/material/Snackbar";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: "#fff",
   ...theme.typography.body2,
@@ -28,6 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
 // This is the Cart page where all the items added will be displayed
 const Cart = () => {
   const [cart, setCart] = useState([]);
+  const [open, setOpen] = useState(false);
   const [coupon, setCoupon] = useState([]);
   useEffect(() => {
     fetch("http://localhost:5000/items", {
@@ -104,6 +105,7 @@ const Cart = () => {
 
       const data = await response.json();
       setCart({ items: [] });
+      setOpen(true);
       console.log("Coupon applied:", data);
     } catch (error) {
       console.error("Failed to add item:", error);
@@ -124,6 +126,9 @@ const Cart = () => {
         return image_map[ii].image;
       }
     }
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
@@ -153,72 +158,86 @@ const Cart = () => {
         </Card>
       ))}
       <div className="Cart-footer">
-        <div className="Cart-total">
-          <div className="Cart-total-title">Total : $</div>
-          <div className="Cart-total-value">{cart.total_price}</div>
-        </div>
-
-        <div className="Cart-couponEligibility">
-          <Stack
-            spacing={{ xs: 0.5, sm: 1 }}
-            direction="row"
-            useFlexGap
-            sx={{ flexWrap: "wrap" }}
-          >
-            {cart?.discount_eligibility && (
-              <Button
-                style={{
-                  color: "black",
-                  borderColor: "black",
-                  margin: "10px;",
-                  background: "rgb(197, 191, 191)",
-                }}
-                className="Cart-coupon-text"
-                onClick={() => generateCoupon()}
-                variant="outlined"
-              >
-                <span>You are eligible to apply coupon. Click here</span>
-              </Button>
-            )}
-            {cart?.discount_eligibility && (
-              <TextField
-                sx={{
-                  color: "white",
-                  border: "1px solid white",
-                  borderRadius: "2px",
-                  padding: "1px",
-                  background: "rgb(197, 191, 191)",
-                }}
-                id="outlined-basic"
-                value={coupon}
-              />
-            )}
-            {cart?.discount_eligibility && (
-              <Button
-                style={{
-                  color: "black",
-                  borderColor: "black",
-                  background: "rgb(197, 191, 191)",
-                }}
-                onClick={() => apply_coupon(coupon)}
-              >
-                Apply Coupon
-              </Button>
-            )}
+        <Stack>
+          <Stack>
+            <div className="Cart-total">
+              <div className="Cart-total-title">Total : $</div>
+              <div className="Cart-total-value">{cart.total_price}</div>
+            </div>
           </Stack>
 
-          <Button
-            style={{
-              marginTop: "5px",
-              color: "black",
-              borderColor: "black",
-              background: "rgb(197, 191, 191)",
-            }}
-            onClick={() => place_order()}
-          >
-            PLACE ORDER
-          </Button>
-        </div>
+          <div className="Cart-couponEligibility">
+            <Stack
+              spacing={{ xs: 0.5, sm: 1 }}
+              direction="row"
+              useFlexGap
+              sx={{ flexWrap: "wrap" }}
+            >
+              {cart?.discount_eligibility && (
+                <Button
+                  style={{
+                    color: "black",
+                    borderColor: "black",
+                    margin: "10px;",
+                    background: "rgb(197, 191, 191)",
+                  }}
+                  className="Cart-coupon-text"
+                  onClick={() => generateCoupon()}
+                  variant="outlined"
+                >
+                  <span>
+                    You are eligible for discount. Click here to apply coupon
+                  </span>
+                </Button>
+              )}
+              {cart?.discount_eligibility && (
+                <TextField
+                  sx={{
+                    color: "white",
+                    border: "1px solid white",
+                    borderRadius: "2px",
+                    padding: "1px",
+                    background: "rgb(197, 191, 191)",
+                  }}
+                  id="outlined-basic"
+                  value={coupon}
+                />
+              )}
+              {cart?.discount_eligibility && (
+                <Button
+                  style={{
+                    color: "black",
+                    borderColor: "black",
+                    background: "rgb(197, 191, 191)",
+                  }}
+                  onClick={() => apply_coupon(coupon)}
+                >
+                  Apply Coupon
+                </Button>
+              )}
+            </Stack>
+            <Stack>
+              <Button
+                style={{
+                  marginTop: "5px",
+                  color: "black",
+                  borderColor: "black",
+                  background: "rgb(197, 191, 191)",
+                }}
+                onClick={() => place_order()}
+              >
+                PLACE ORDER
+              </Button>
+              <Snackbar
+                open={open}
+                autoHideDuration={6000}
+                onClose={handleClose}
+                message="ORDER PLACED!"
+                anchorOrigin={{ vertical: "top", horizontal: "center" }}
+              />
+            </Stack>
+          </div>
+        </Stack>
       </div>
     </div>
   );

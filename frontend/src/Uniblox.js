@@ -8,10 +8,10 @@ import shoes from "./images/shoes.jpg";
 import smartphone from "./images/smartphone.jpg";
 import bag from "./images/bag.webp";
 import watch from "./images/watch.webp";
-import SearchBar from "./components/SearchBar";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import Snackbar from "@mui/material/Snackbar";
+
 const Uniblox = ({ addToCart }) => {
   //hook used for navigation
   const navigate = useNavigate();
@@ -21,6 +21,7 @@ const Uniblox = ({ addToCart }) => {
   };
 
   const [items, setItems] = useState([]);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     fetch("http://localhost:5000/products", {
@@ -54,11 +55,10 @@ const Uniblox = ({ addToCart }) => {
   };
 
   const [getItem, setGetItem] = useState([]);
-
   const addItems = async (item) => {
     try {
       const response = await fetch("http://localhost:5000/items", {
-        method: "POST", // Change to POST
+        method: "POST",
         headers: {
           "Content-Type": "application/json", // Set content type to JSON
         },
@@ -71,21 +71,22 @@ const Uniblox = ({ addToCart }) => {
 
       const data = await response.json();
       console.log("Item added:", data);
-      setGetItem(data); // Update your state or handle response data as needed
+      setGetItem(data);
+      setOpen(true);
     } catch (error) {
       console.error("Failed to add item:", error);
     }
+  };
+  const handleClose = () => {
+    setOpen(false);
   };
 
   return (
     <div className="Uniblox">
       <div className="Uniblox-header">
-        <header className="Uniblox-header-content">
+        <div className="Uniblox-header-content">
           <img src={unibloxlogo} className="Uniblox-logo" alt="logo" />
           <p className="Uniblox-title">Uniblox</p>
-        </header>
-        <div className="Uniblox-searchBar">
-          <SearchBar items={items} />
         </div>
         <div className="Uniblox-topMenu">
           <Button className="Uniblox-topMenu-signin">Sign in</Button>
@@ -110,6 +111,13 @@ const Uniblox = ({ addToCart }) => {
             >
               Add to cart
             </Button>
+            <Snackbar
+              open={open}
+              autoHideDuration={6000}
+              onClose={handleClose}
+              message="ITEM ADDED TO CART!"
+              anchorOrigin={{ vertical: "top", horizontal: "center" }}
+            />
           </div>
         ))}
       </div>

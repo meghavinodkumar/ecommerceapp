@@ -7,28 +7,23 @@
 .Uniblox-header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-bottom: 20px;
+  width: 90%;
 }
 .Uniblox-header-content {
   display: flex;
-  width: 10%;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 20px;
+  margin-left: 100px;
   font-size: calc(20px + 1vmin);
   color: white;
 }
 .Uniblox-title {
   font-weight: 600;
   cursor: pointer;
-}
-.search {
-  width: 50%;
-}
-.Uniblox-searchBar {
-  color: white;
 }
 .Uniblox-topMenu {
   display: flex;
@@ -54,6 +49,7 @@
   flex-direction: column;
   align-items: center;
   width: 30%;
+  padding-bottom: 20px;
 }
 .Uniblox-bodyItems-item-img {
   width: 80%;
@@ -71,7 +67,4 @@
   font-size: 15px;
   color: white;
   font-weight: 200;
-}
-.Uniblox-link {
-  color: #61dafb;
 }
