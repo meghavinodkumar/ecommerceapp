@@ -1,0 +1,30 @@
+.Cart{
+    background:radial-gradient(circle at top left, #314a539e, transparent 12%),
+  #121212;
+  height:100vh;
+}
+.Cart-header{
+    color:white;
+    font-size:30px;
+    font-weight:400;
+    padding: 50px;
+}
+.Cart-items{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.Cart-item{
+  border-radius: 40px;
+  border: white solid;
+}
+
+.Cart-item-name{
+  color: white;
+}
+.Cart-item-price{
+  color: white;
+}
+.Cart-card-content {
+  display:grid !important;
+}

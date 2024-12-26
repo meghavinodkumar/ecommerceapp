@@ -10,10 +10,15 @@ import bag from "./images/bag.webp";
 import watch from "./images/watch.webp";
 import SearchBar from './components/SearchBar';
 import { useState } from 'react';
-const handleOnClick=()=>{
-  alert("You have clicked the button");
-}
+import { useNavigate } from 'react-router-dom';
+
 const Uniblox=()=> {
+  //hook used for navigation
+  const navigate = useNavigate(); 
+//handle onClick for navigation to the Cart page
+  const handleOnClick = () => {
+    navigate('/cart'); 
+  };
   const [items] = useState([
     { name: 'Bag', price: 50, image: bag },
     { name: 'Laptop', price: 2000, image: laptop },

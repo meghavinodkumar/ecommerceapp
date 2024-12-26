@@ -33,9 +33,9 @@
 }
 .Uniblox-topMenu{
   display: flex;
-  align-items: flex-end;
+  align-items:center;
   flex-direction: row;
-  justify-content: center;
+  /* justify-content: space-evenly; */
   color:#ffffff;
   gap:50px;
 }
