@@ -1,45 +1,59 @@
-.Cart{
-    background:radial-gradient(circle at top left, #314a539e, transparent 12%),
-  #121212;
-  height:100vh;
+.Cart {
+  background: radial-gradient(circle at top left, #314a539e, transparent 12%),
+    #121212;
+  height: 100%;
 }
-.Cart-header{
-    color:white;
-    font-size:30px;
-    font-weight:400;
-    padding-top:50px;
-    margin-left: 50px;
+.Cart-header {
+  color: white;
+  font-size: 30px;
+  font-weight: 400;
+  padding-top: 50px;
+  margin-left: 50px;
 }
-.Cart-items{
+.Cart-items {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.Cart-item{
+.Cart-item {
   border-radius: 40px;
   border: white solid;
 }
-.Cart-card{
+.Cart-card {
+  display: flex;
+  flex-direction: row !important;
   margin: 50px;
+  background-color: rgb(197, 191, 191) !important;
 }
 
-.Cart-item-name{
-  color: white;
-}
-.Cart-item-price{
-  color: white;
-}
 .Cart-card-content {
-  display:grid !important;
+  display: flex !important;
+  flex-direction: column !important;
+  width: 50%;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
 }
-.Cart-total{
+.Cart-total {
   color: white;
-  font-size:30px;
-  font-weight:400;
+  font-size: 30px;
+  font-weight: 400;
   margin-left: 50px;
   display: flex;
   flex-direction: row;
 }
-.Cart-coupon-text{
+.Cart-coupon-text {
   color: white;
+}
+.Cart-card-image {
+  width: 40%;
+  object-fit: cover;
+  border: 2px solid grey;
+  border-radius: 10px;
+}
+.Cart-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  margin-right: 10px;
 }

@@ -1,10 +1,10 @@
 .Uniblox {
   text-align: center;
-  background:radial-gradient(circle at top left, #314a539e, transparent 12%),
-  #121212;
-  height:100%;
+  background: radial-gradient(circle at top left, #314a539e, transparent 12%),
+    #121212;
+  height: 100%;
 }
-.Uniblox-header{
+.Uniblox-header {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
@@ -15,30 +15,27 @@
   width: 10%;
   flex-direction: row;
   align-items: center;
-  justify-content:center;
-  gap:20px;
+  justify-content: center;
+  gap: 20px;
   font-size: calc(20px + 1vmin);
   color: white;
 }
-.Uniblox-title{
-  font-weight:600;
-  cursor:pointer;
+.Uniblox-title {
+  font-weight: 600;
+  cursor: pointer;
 }
 .search {
   width: 50%;
 }
-.Uniblox-searchBar{
-  /* width:300px; */
+.Uniblox-searchBar {
   color: white;
-  
 }
-.Uniblox-topMenu{
+.Uniblox-topMenu {
   display: flex;
-  align-items:center;
+  align-items: center;
   flex-direction: row;
-  /* justify-content: space-evenly; */
-  color:#ffffff;
-  gap:50px;
+  color: #ffffff;
+  gap: 50px;
 }
 
 .Uniblox-logo {
@@ -46,40 +43,35 @@
   pointer-events: none;
 }
 
-
-.Uniblox-bodyItems{
+.Uniblox-bodyItems {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-around;
 }
-.Uniblox-bodyItems-item{
+.Uniblox-bodyItems-item {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 30%; 
-  border: 0.5px solid grey;
-  border-radius: 10px;
-
+  width: 30%;
 }
-.Uniblox-bodyItems-item-img{
-  width: 80%; 
-  height: 300px; 
-  object-fit: cover; 
+.Uniblox-bodyItems-item-img {
+  width: 80%;
+  height: 300px;
+  object-fit: cover;
   border: 2px solid grey;
   border-radius: 10px;
 }
-.Uniblox-bodyItems-item-name{
-  font-size:20px;
-  color:white;
-  font-weight:400;
+.Uniblox-bodyItems-item-name {
+  font-size: 20px;
+  color: white;
+  font-weight: 400;
 }
-.Uniblox-bodyItems-item-price{
-  font-size:15px;
-  color:white;
-  font-weight:200;
+.Uniblox-bodyItems-item-price {
+  font-size: 15px;
+  color: white;
+  font-weight: 200;
 }
 .Uniblox-link {
   color: #61dafb;
 }
-
