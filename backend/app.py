@@ -11,12 +11,12 @@ CORS(app)
 # Since we are not using a persistant storage here, the following in-memory variables are used for the temporary storage
 
 # List of products
-products = [ { 'id': 1, 'name': 'Bag', 'price':'50', 'image_id': 1 },
-           { 'id': 2, 'name': 'Laptop', 'price':'2000' , 'image_id': 2 },
-           { 'id': 3, 'name': 'Smartphone','price':'1000', 'image_id': 3  },
-           { 'id': 4, 'name': 'Headphone','price':'100', 'image_id': 4  },
-           { 'id': 5, 'name': 'Shoes','price':'200', 'image_id': 5  },
-           { 'id': 6, 'name': 'Watch','price':'150', 'image_id': 6  }
+products = [ { 'id': 1, 'name': 'Gear Aspire 30L Medium Water Restant Office (Laptop Sleeve Fits Upto 15)', 'price':50, 'image_id': 1 },
+           { 'id': 2, 'name': 'Apple MacBook Air Laptop: Apple M1 chip, 13.3-inch/33.74 cm Retina Display, 8GB RAM, 256GB SSD Storage', 'price':2000 , 'image_id': 2 },
+           { 'id': 3, 'name': 'Samsung Galaxy A16 5G (Light Green, 6GB RAM, 128GB Storage)','price':1000, 'image_id': 3  },
+           { 'id': 4, 'name': 'Sony WH-CH520 Wireless Bluetooth Headphones','price':100, 'image_id': 4  },
+           { 'id': 5, 'name': 'Skechers Go Walk 5 Merritt Walking Shoe','price':200, 'image_id': 5  },
+           { 'id': 6, 'name': 'Michael Kors Resin Analog Rose Dial Women Watch-Mk5896, Gold Band','price':150, 'image_id': 6  }
         ]
 
 # List of orders
@@ -119,7 +119,7 @@ def apply_coupon(code):
         cart['total_price'] = totalPrice
         cart['discount_code'] = code
         cart['discount_amount'] = discount_amount
-    return jsonify({'total_price':totalPrice})
+    return jsonify(cart)
 
 # check whether the last count-1 orders did not apply any coupons. 
 # If so return a boolean flag indicating that this order is eligible for discount 

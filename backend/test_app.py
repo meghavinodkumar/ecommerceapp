@@ -100,18 +100,18 @@ class TestApp(unittest.TestCase):
         response = self.client.post('/orders')
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data)
-        self.assertTrue('items' in data)  # Ensure items are present in the order
+        # Ensure items are present in the order
+        self.assertTrue('items' in data)  
 
     def test_get_orders(self):
         """Test GET /orders API to fetch all previous orders"""
         response = self.client.get('/orders')
         self.assertEqual(response.status_code, 200)
         data = json.loads(response.data)
-        self.assertIsInstance(data, list)  # Orders should be returned as a list
+        # Orders should be returned as a list
+        self.assertIsInstance(data, list) 
 
-    ##########################
     ### Test Admin Stats API ###
-    ##########################
 
     def test_admin_stats(self):
         """Test GET /admin_stats API to get admin stats"""
