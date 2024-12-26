@@ -1,9 +1,15 @@
 .Uniblox {
   text-align: center;
-  background-color: #282c34;
-  min-height: 100vh;
+  background:radial-gradient(circle at top left, #314a539e, transparent 12%),
+  #121212;
+  height:100%;
 }
-.Uniblox-header {
+.Uniblox-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.Uniblox-header-content {
   display: flex;
   width: 30%;
   flex-direction: row;
@@ -15,10 +21,15 @@
 }
 .Uniblox-title{
   font-weight:600;
+  cursor:pointer;
+}
+.search {
+  width: 50%;
 }
 .Uniblox-searchBar{
-  /* width: 100%; */
-  /* min-height: 50vh; */
+  /* width:300px; */
+  color: white;
+  
 }
 .Uniblox-topMenu{
   display: flex;
@@ -34,23 +45,36 @@
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .Uniblox-logo {
-    animation: Uniblox-logo-spin infinite 20s linear;
-  }
+
+.Uniblox-bodyItems{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
+.Uniblox-bodyItems-item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%; 
 
-
-
+}
+.Uniblox-bodyItems-item-img{
+  width: 80%; 
+  height: 300px; 
+  object-fit: cover; 
+}
+.Uniblox-bodyItems-item-name{
+  font-size:20px;
+  color:white;
+  font-weight:400;
+}
+.Uniblox-bodyItems-item-price{
+  font-size:15px;
+  color:white;
+  font-weight:200;
+}
 .Uniblox-link {
   color: #61dafb;
 }
-/* 
-@keyframes Uniblox-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-} */
+
