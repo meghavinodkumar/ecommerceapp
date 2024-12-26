@@ -9,10 +9,10 @@ import smartphone from "./images/smartphone.jpg";
 import bag from "./images/bag.webp";
 import watch from "./images/watch.webp";
 import SearchBar from './components/SearchBar';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-
-const Uniblox=()=> {
+import axios from "axios";
+const Uniblox=({addToCart})=> {
   //hook used for navigation
   const navigate = useNavigate(); 
 //handle onClick for navigation to the Cart page
@@ -27,6 +27,32 @@ const Uniblox=()=> {
     { name: 'Shoes', price: 200, image: shoes },
     { name: 'Watch', price: 150, image: watch },
   ]);
+  const [getItem, setGetItem]=useState([]);
+    const addItems = async (item) => {
+      try {
+        const response = await fetch("http://localhost:5000/items", {
+          method: "POST", 
+          headers: {
+            // Set content type to JSON
+            "Content-Type": "application/json", 
+          },
+           // Include the item in the body
+          body: JSON.stringify(item),
+        });
+    
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+    
+        const data = await response.json();
+        console.log("Item added:", data);
+        // Update your state or handle response data as needed
+        setGetItem(data); 
+      } catch (error) {
+        console.error("Failed to add item:", error);
+      }
+    };
+    
   return (
     <div className="Uniblox">
       <div className='Uniblox-header'>
@@ -39,7 +65,7 @@ const Uniblox=()=> {
         </div>
         <div className="Uniblox-topMenu">
           <Button className="Uniblox-topMenu-signin">
-            Signin
+            Sign in
           </Button>
           <Button className="Uniblox-topMenu-cart" onClick={handleOnClick}>
             Cart
@@ -52,7 +78,7 @@ const Uniblox=()=> {
               <img src={item.image}className="Uniblox-bodyItems-item-img" alt={item.name}/>
               <p className="Uniblox-bodyItems-item-name">{item.name}</p>
               <p className="Uniblox-bodyItems-item-price">${item.price}</p>
-              <Button className="Uniblox-bodyItems-item-addItem">
+              <Button className="Uniblox-bodyItems-item-addItem" onClick={() => addItems(item)}>
                 Add to cart
               </Button>
            </div>
