@@ -1,4 +1,4 @@
-# uniblox-ecommerceapp
+# ecommerceapp
 Backend and frontend components for an ecommerce application
 Frontend - React 
 Backend - Python Flask 
@@ -12,14 +12,14 @@ Data Storage - In memory (List-hashmap)
 2. Create python virtual environment `python -m venv myenv`
 3. Activate virtual environment `source myenv/bin/activate`
 4. Install the following python modules Flask==3.1.0 and Flask-Cors==5.0.0
-5. `cd uniblox/backend`
+5. `cd ecommerceapp/backend`
 6. Start the flask application `python app.py`
 7. This will start in flask server on port 5000
 
 ### Setting up react app
 
 1. Make sure the node environment set up
-2. `cd uniblox/frontend`
+2. `cd ecommerceapp/frontend`
 3. Issue the command `npm install` this will install react and all the necessary libraries
 4. Run `npm start`
 5. This will start the react server on port 3000
