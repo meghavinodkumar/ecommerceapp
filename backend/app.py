@@ -65,9 +65,6 @@ def add_item_to_cart():
 def get_items_in_cart():
     """ Get the list of all items in the cart along with the total and eligibility for discount """
     global cart
-    # if (len(cart['items'])):
-    #     cart['total_price'] = get_total_price()
-    #     cart['discount_eligibility'] = is_eligible_for_discount(n_orders)
     return jsonify(cart)
 
 @app.route('/items/<id>', methods=['DELETE'])
@@ -166,7 +163,7 @@ def admin_stats():
         total_purchase_amount += order['total_price']
         if order['coupon_applied']:
             total_discount_amount + order['discount_amount']
-            discount_codes.append[order['discount_code']]
+            discount_codes.append(order['discount_code'])
     return jsonify({'total_items_purchased': num_items, 'total_purchase_amount': total_purchase_amount, 
                     'discount_codes': discount_codes, 'total_discount_amount': total_discount_amount})
     
